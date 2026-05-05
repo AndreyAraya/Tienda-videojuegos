@@ -14,6 +14,11 @@ class VideojuegoSeeder extends Seeder
                 'nombre' => 'The Legend of Zelda: Tears of the Kingdom',
                 'precio' => 69.99,
                 'descripcion' => 'Aventura épica en el reino de Hyrule.',
+
+
+
+
+                dkd
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
