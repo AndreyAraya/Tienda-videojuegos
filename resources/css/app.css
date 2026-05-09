@@ -1,577 +1,379 @@
-@import "tailwindcss";
+/* =========================================
+   1. CONFIGURACIÓN BASE Y VARIABLES
+   ========================================= */
+@import url("https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Roboto:wght@300;400;700&display=swap");
 
-/* ── RESET ── */
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-/* ── RESET ── */
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-/* ── VARIABLES ── */
 :root {
-    --bg: #080b12;
-    --surface: #0e1420;
-    --border: #1a2438;
-    --text: #e8eaf0;
-    --muted: #5a6a80;
-    --dimmed: #2e3d50;
-}
+    --bg-dark: #0b0e14;
+    --card-bg: #161b22;
+    --input-bg: #0d1117;
+    --neon-cyan: #00ffcc;
+    --text-main: #ffffff;
+    --text-muted: #8b949e;
+    --error: #ff4444;
+    --warning: #f1c40f;
 
-/* ── BASE ── */
-html {
-    scroll-behavior: smooth;
+    /* Obliga al navegador a renderizar en modo oscuro desde la raíz */
+    color-scheme: dark;
 }
 
 body {
-    font-family: "DM Sans", sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    min-height: 100vh;
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    font-family: "Roboto", sans-serif;
+    margin: 0;
+    line-height: 1.5;
 }
 
-/* ── NAVBAR ── */
-nav {
+/* =========================================
+   2. FIX DEFINITIVO PARA AUTOLLENADO (LOGIN)
+   ========================================= */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    /* Mantiene el fondo oscuro con sombra interna */
+    -webkit-box-shadow: 0 0 0px 1000px var(--input-bg) inset !important;
+    /* Obliga al texto a ser blanco */
+    -webkit-text-fill-color: #ffffff !important;
+    /* Color del cursor */
+    caret-color: #ffffff !important;
+    /* Borde sutil */
+    border: 1px solid #30363d !important;
+    /* Evita parpadeos de color del navegador */
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+/* =========================================
+   3. NAVEGACIÓN (NAVBAR)
+   ========================================= */
+.navbar {
+    background: #0d1117;
+    padding: 15px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #21262d;
     position: sticky;
     top: 0;
-    z-index: 100;
-    background: rgba(8, 11, 18, 0.85);
-    backdrop-filter: blur(16px);
-    border-bottom: 1px solid var(--border);
-    padding: 0 2.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 64px;
+    z-index: 1000;
 }
 
 .nav-logo {
-    font-family: "Bebas Neue", sans-serif;
-    font-size: 28px;
-    letter-spacing: 4px;
+    font-family: "Rajdhani", sans-serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    text-transform: uppercase;
     color: #fff;
     text-decoration: none;
+    letter-spacing: 2px;
 }
 
 .nav-logo span {
-    color: #00c9a7;
+    color: var(--neon-cyan);
+    text-shadow: 0 0 8px rgba(0, 255, 204, 0.4);
 }
 
-.nav-links {
+.nav-center {
     display: flex;
-    gap: 2rem;
-    list-style: none;
+    gap: 25px;
 }
 
-.nav-links a {
-    font-size: 13px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    color: var(--muted);
+.nav-center a {
+    color: var(--text-muted);
     text-decoration: none;
-    transition: color 0.2s;
-}
-
-.nav-links a:hover {
-    color: #fff;
-}
-
-.nav-actions {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
-
-.btn-nav {
-    font-size: 12px;
-    font-weight: 500;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    font-weight: bold;
     letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 8px 18px;
-    border-radius: 8px;
-    border: 1.5px solid #00c9a7;
-    background: transparent;
-    color: #00c9a7;
-    cursor: pointer;
-    transition:
-        background 0.2s,
-        color 0.2s;
+    transition: 0.3s;
 }
 
-.btn-nav:hover {
-    background: #00c9a7;
-    color: #080b12;
+.nav-center a:hover {
+    color: var(--neon-cyan);
 }
 
-/* ── HERO ── */
-.hero {
-    position: relative;
-    min-height: 520px;
-    display: flex;
-    align-items: center;
-    overflow: hidden;
-    padding: 4rem 2.5rem;
-}
-
-.hero-bg {
-    position: absolute;
-    inset: 0;
-    background:
-        radial-gradient(
-            ellipse 60% 60% at 70% 50%,
-            rgba(0, 201, 167, 0.08) 0%,
-            transparent 70%
-        ),
-        radial-gradient(
-            ellipse 40% 40% at 20% 80%,
-            rgba(159, 122, 234, 0.07) 0%,
-            transparent 70%
-        ),
-        url("https://images.unsplash.com/photo-1556438064-2d7646166914?q=80&w=1800&auto=format&fit=crop")
-            center/cover no-repeat;
-}
-
-.hero-bg::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-        90deg,
-        rgba(8, 11, 18, 0.97) 40%,
-        rgba(8, 11, 18, 0.5) 100%
-    );
-}
-
-.hero-content {
-    position: relative;
-    z-index: 1;
-    max-width: 600px;
-}
-
-.hero-tag {
-    display: inline-block;
-    font-size: 11px;
-    letter-spacing: 2.5px;
-    text-transform: uppercase;
-    color: #00c9a7;
-    border: 1px solid rgba(0, 201, 167, 0.35);
-    padding: 5px 14px;
+.btn-login-nav {
+    border: 1px solid var(--neon-cyan);
+    color: var(--neon-cyan);
+    padding: 6px 16px;
     border-radius: 4px;
-    margin-bottom: 1.5rem;
-}
-
-.hero-title {
-    font-family: "Bebas Neue", sans-serif;
-    font-size: clamp(52px, 8vw, 88px);
-    letter-spacing: 4px;
-    line-height: 0.95;
-    color: #fff;
-    margin-bottom: 1.25rem;
-}
-
-.hero-title span {
-    color: #00c9a7;
-}
-
-.hero-desc {
-    font-size: 15px;
-    color: var(--muted);
-    line-height: 1.7;
-    max-width: 440px;
-    margin-bottom: 2rem;
-}
-
-.hero-cta {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-    flex-wrap: wrap;
-}
-
-.btn-primary {
-    font-size: 13px;
-    font-weight: 500;
-    letter-spacing: 1px;
+    text-decoration: none;
+    font-size: 0.7rem;
+    font-weight: bold;
     text-transform: uppercase;
-    padding: 14px 30px;
-    border-radius: 10px;
-    border: none;
-    background: #00c9a7;
-    color: #080b12;
-    cursor: pointer;
-    transition:
-        opacity 0.2s,
-        transform 0.2s;
+    transition: 0.3s;
 }
 
-.btn-primary:hover {
-    opacity: 0.85;
-    transform: translateY(-1px);
+.btn-login-nav:hover {
+    background: var(--neon-cyan);
+    color: #000;
+    box-shadow: 0 0 15px rgba(0, 255, 204, 0.3);
 }
 
-.btn-ghost {
-    font-size: 13px;
-    font-weight: 500;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 14px 30px;
-    border-radius: 10px;
-    border: 1.5px solid var(--border);
-    background: transparent;
-    color: var(--muted);
-    cursor: pointer;
-    transition:
-        border-color 0.2s,
-        color 0.2s;
-}
-
-.btn-ghost:hover {
-    border-color: #fff;
-    color: #fff;
-}
-
-.hero-stats {
-    display: flex;
-    gap: 2.5rem;
-    margin-top: 3rem;
-    padding-top: 2rem;
-    border-top: 1px solid var(--border);
-}
-
-.stat-num {
-    font-family: "Bebas Neue", sans-serif;
-    font-size: 32px;
-    letter-spacing: 2px;
-    color: #fff;
-}
-
-.stat-label {
-    font-size: 11px;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: var(--dimmed);
-    margin-top: 2px;
-}
-
-/* ── SECTION ── */
-section {
-    padding: 4rem 2.5rem;
-}
-
-.section-header {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    margin-bottom: 2rem;
+/* =========================================
+   4. TARJETAS DE JUEGOS (STORE & LIBRARY)
+   ========================================= */
+.container {
+    width: 90%;
+    max-width: 1400px;
+    margin: auto;
+    padding: 40px 0;
 }
 
 .section-title {
-    font-family: "Bebas Neue", sans-serif;
-    font-size: 36px;
-    letter-spacing: 3px;
-    color: #fff;
-}
-
-.section-link {
-    font-size: 12px;
-    letter-spacing: 1px;
+    font-family: "Rajdhani", sans-serif;
+    font-size: 1.8rem;
     text-transform: uppercase;
-    color: var(--muted);
-    text-decoration: none;
-    transition: color 0.2s;
+    letter-spacing: 2px;
+    margin-bottom: 30px;
 }
 
-.section-link:hover {
-    color: #00c9a7;
-}
-
-/* ── CARDS ── */
-.cards-grid {
+.game-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 25px;
 }
 
-.game-card {
-    position: relative;
-    border-radius: 16px;
+.card {
+    background: var(--card-bg);
+    border-radius: 8px;
     overflow: hidden;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    cursor: pointer;
-    transition:
-        transform 0.3s ease,
-        border-color 0.3s ease,
-        box-shadow 0.3s ease;
+    transition: 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    flex-direction: column;
 }
 
-.game-card img {
+.card:hover {
+    transform: translateY(-8px);
+    border-color: var(--neon-cyan);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+.card-header {
+    position: relative;
+    height: 140px;
+}
+.card-header img {
     width: 100%;
-    height: 180px; /* Altura perfecta para cabeceras de Steam */
+    height: 100%;
     object-fit: cover;
-    display: block;
 }
 
-.card-img-wrap {
-    position: relative;
-    height: 200px;
-    overflow: hidden;
-}
-
-.card-img-wrap img {
-    width: 100%;
-    height: 180px; /* Ajustar altura a gusto */
-    object-fit: cover; /* Ajusta imagen para que encaje sin estirarse */
-}
-
-.game-card {
-    transition: all 0.3s ease; /* Esto hace que el brillo aparezca suavemente */
-    border: 1px solid transparent; /* Borde invisible por defecto */
-}
-
-.game-card:hover {
-    transform: translateY(-5px); /* La tarjeta sube un poquito */
-    border-color: #00ffcc; /* Color neón del borde */
-    box-shadow: 0 0 20px rgba(0, 255, 204, 0.6); /* El brillo exterior */
-    cursor: pointer;
-}
-
-.img-overlay {
+.badge-disponible {
     position: absolute;
-    inset: 0;
-    background: linear-gradient(
-        to bottom,
-        transparent 40%,
-        var(--surface) 100%
-    );
-}
-
-.badge {
-    position: absolute;
-    top: 12px;
-    left: 12px;
-    font-family: "Bebas Neue", sans-serif;
-    font-size: 11px;
-    letter-spacing: 1.5px;
-    padding: 4px 10px;
-    border-radius: 4px;
-    background: var(--accent);
-    color: #080b12;
-    z-index: 1;
+    top: 10px;
+    left: 10px;
+    background: var(--neon-cyan);
+    color: #000;
+    font-size: 0.55rem;
+    font-weight: 900;
+    padding: 3px 7px;
+    border-radius: 3px;
+    text-transform: uppercase;
 }
 
 .card-body {
-    padding: 1rem 1.25rem 1.25rem;
+    padding: 18px;
+    flex-grow: 1;
 }
 
-.card-genre {
-    font-size: 10px;
-    letter-spacing: 2px;
+.card-tags {
+    color: var(--neon-cyan);
+    font-size: 0.6rem;
+    font-weight: bold;
     text-transform: uppercase;
-    color: var(--accent);
     margin-bottom: 4px;
-    font-weight: 500;
 }
-
+.card-platforms {
+    color: var(--text-muted);
+    font-size: 0.6rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
 .card-title {
-    font-family: "Bebas Neue", sans-serif;
-    font-size: 26px;
-    letter-spacing: 1.5px;
-    color: #fff;
-    line-height: 1.1;
-    margin-bottom: 6px;
+    font-size: 1rem;
+    font-weight: 700;
+    margin: 0 0 10px 0;
+    text-transform: uppercase;
 }
-
 .card-desc {
-    font-size: 12px;
-    color: var(--muted);
-    line-height: 1.5;
-    margin-bottom: 0.75rem;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+    margin-bottom: 15px;
+    height: 40px;
+    overflow: hidden;
 }
 
-.card-stars {
-    font-size: 11px;
-    color: #f5c518;
-    letter-spacing: 1px;
-    margin-bottom: 0.75rem;
-}
-
-.card-stars span {
-    color: #3d4a5c;
+.stars {
+    color: var(--warning);
+    font-size: 0.7rem;
+    margin-bottom: 15px;
 }
 
 .card-footer {
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    gap: 8px;
+    align-items: center;
+    padding-top: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.card-price {
-    font-family: "Bebas Neue", sans-serif;
-    font-size: 32px;
-    letter-spacing: 1px;
-    color: var(--accent);
-    line-height: 1;
+.price {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--neon-cyan);
 }
 
-.card-price-orig {
-    font-size: 12px;
-    color: #3d4a5c;
-    text-decoration: line-through;
-    margin-top: 2px;
-}
-
-.btn-buy {
-    font-family: "DM Sans", sans-serif;
-    font-size: 12px;
-    font-weight: 500;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 10px 18px;
-    border-radius: 8px;
-    border: 1.5px solid var(--accent);
+.btn-action {
     background: transparent;
-    color: var(--accent);
+    border: 1px solid rgba(0, 255, 204, 0.5);
+    color: var(--neon-cyan);
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 0.65rem;
+    font-weight: bold;
     cursor: pointer;
-    transition:
-        background 0.2s,
-        color 0.2s;
+    text-transform: uppercase;
+    transition: 0.2s;
 }
 
-.btn-buy:hover {
-    background: var(--accent);
-    color: #080b12;
+.btn-action:hover {
+    background: var(--neon-cyan);
+    color: #000;
 }
 
-/* ── BANNER ── */
-.banner {
-    margin: 0 2.5rem;
-    border-radius: 20px;
-    background: linear-gradient(135deg, #0d1f2d 0%, #0a1520 100%);
-    border: 1px solid #1a2d40;
-    padding: 3rem;
+/* =========================================
+   5. FORMULARIOS (LOGIN, CREATE, EDIT)
+   ========================================= */
+.admin-container {
     display: flex;
+    justify-content: center;
     align-items: center;
-    justify-content: space-between;
-    gap: 2rem;
-    flex-wrap: wrap;
-    position: relative;
-    overflow: hidden;
+    min-height: 80vh;
 }
 
-.banner::before {
-    content: "";
-    position: absolute;
-    right: -60px;
-    top: -60px;
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    background: radial-gradient(
-        circle,
-        rgba(0, 201, 167, 0.08) 0%,
-        transparent 70%
-    );
+.admin-card {
+    background: var(--card-bg);
+    padding: 40px;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 450px;
+    border-top: 4px solid var(--neon-cyan);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
 }
 
-.banner-text h2 {
-    font-family: "Bebas Neue", sans-serif;
-    font-size: 36px;
-    letter-spacing: 3px;
-    color: #fff;
+.admin-card h2 {
+    font-family: "Rajdhani", sans-serif;
+    color: var(--neon-cyan);
+    text-align: center;
+    margin-bottom: 30px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+.form-group label {
+    display: block;
+    font-size: 0.7rem;
+    color: var(--text-muted);
     margin-bottom: 8px;
+    text-transform: uppercase;
+    font-weight: bold;
 }
 
-.banner-text p {
-    font-size: 14px;
-    color: var(--muted);
-}
-.banner-text strong {
-    color: #00c9a7;
-    font-weight: 500;
-}
-
-/* ── FOOTER ── */
-footer {
-    border-top: 1px solid var(--border);
-    margin-top: 4rem;
-    padding: 2rem 2.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1.5rem;
-    flex-wrap: wrap;
+.admin-input {
+    width: 100%;
+    background: var(--input-bg) !important;
+    border: 1px solid #30363d;
+    padding: 12px 15px;
+    color: white !important;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 0.9rem;
+    transition: 0.3s;
 }
 
-.footer-brand {
-    font-family: "Bebas Neue", sans-serif;
-    font-size: 22px;
-    letter-spacing: 3px;
-    color: #fff;
+.admin-input:focus {
+    border-color: var(--neon-cyan) !important;
+    outline: none;
+    box-shadow:
+        0 0 10px rgba(0, 255, 204, 0.2),
+        0 0 0px 1000px var(--input-bg) inset !important;
 }
 
-.footer-brand span {
-    color: #00c9a7;
+.btn-admin {
+    width: 100%;
+    background: var(--neon-cyan);
+    color: #0b0e14;
+    border: none;
+    padding: 15px;
+    font-family: "Rajdhani", sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    transition: 0.3s;
 }
 
-.footer-copy {
-    font-size: 12px;
-    color: var(--dimmed);
-    margin-top: 6px;
+.btn-admin:hover {
+    box-shadow: 0 0 20px rgba(0, 255, 204, 0.4);
+    transform: translateY(-2px);
+}
+/* --- Navegación --- */
+.nav-link-active {
+    color: #fff !important;
+    border-bottom: 2px solid var(--neon-cyan);
 }
 
-.footer-links {
-    display: flex;
-    gap: 1.5rem;
+.btn-add-game {
+    background: var(--neon-cyan) !important;
+    color: #000 !important;
+    border: none !important;
 }
 
-.footer-links a {
-    font-size: 12px;
-    color: var(--dimmed);
+.btn-logout {
+    color: #ff4444 !important;
+    font-size: 0.7rem;
+    margin-left: 15px;
     text-decoration: none;
-    letter-spacing: 0.5px;
-    transition: color 0.2s;
+    font-weight: bold;
 }
 
-.footer-links a:hover {
-    color: #00c9a7;
+/* --- Stock --- */
+.stock-indicator {
+    font-size: 0.65rem;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: var(--text-muted);
 }
 
-/* ── RESPONSIVE ── */
-@media (max-width: 640px) {
-    nav {
-        padding: 0 1.25rem;
-    }
-    .nav-links {
-        display: none;
-    }
-    .hero {
-        padding: 3rem 1.25rem;
-    }
-    section {
-        padding: 3rem 1.25rem;
-    }
-    .banner {
-        margin: 0 1.25rem;
-        padding: 2rem 1.5rem;
-    }
-    footer {
-        padding: 2rem 1.25rem;
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    .hero-stats {
-        gap: 1.5rem;
-    }
+/* Se activa automáticamente si el stock es bajo */
+.low-stock {
+    color: var(--error) !important;
+}
+
+/* --- Botones de Acción --- */
+.btn-edit {
+    border-color: #f1c40f !important;
+    color: #f1c40f !important;
+    padding: 5px 8px;
+}
+
+.btn-action:disabled {
+    border-color: #444 !important;
+    color: #444 !important;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.new-badge {
+    color: #444;
+    font-size: 0.6rem;
+    margin-left: 5px;
 }
