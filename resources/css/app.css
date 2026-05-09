@@ -334,8 +334,16 @@ section {
     object-fit: cover; /* ¡Esto es lo más importante! Corta la imagen para que encaje sin estirarse */
 }
 
-.game-card:hover .card-img-wrap img {
-    transform: scale(1.07);
+.game-card {
+    transition: all 0.3s ease; /* Esto hace que el brillo aparezca suavemente */
+    border: 1px solid transparent; /* Borde invisible por defecto */
+}
+
+.game-card:hover {
+    transform: translateY(-5px); /* La tarjeta sube un poquito */
+    border-color: #00ffcc; /* Color neón del borde */
+    box-shadow: 0 0 20px rgba(0, 255, 204, 0.6); /* El brillo exterior */
+    cursor: pointer;
 }
 
 .img-overlay {
