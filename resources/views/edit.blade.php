@@ -14,7 +14,7 @@
 
     <div class="admin-container">
         <div class="admin-card">
-            <h2>Gestión de Software</h2>
+            <h2>Gestión de juego</h2>
 
             <form action="{{ route('videojuegos.update', $juego->id) }}" method="POST">
                 @csrf
