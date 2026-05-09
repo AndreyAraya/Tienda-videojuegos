@@ -20,6 +20,7 @@ return new class extends Migration
             $table->decimal('precio', 8, 2);       // Precio
             $table->integer('stock');              // Inventario
             $table->date('fecha_lanzamiento');     // Fecha
+            $table->string('imagen')->nullable();  // Esto crea el casillero para el link
             $table->timestamps();                  // created_at y updated_at
         });
     }

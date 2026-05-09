@@ -11,7 +11,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // Llamamos a tu seeder de videojuegos aquí
         $this->call([
             VideojuegoSeeder::class,
         ]);
