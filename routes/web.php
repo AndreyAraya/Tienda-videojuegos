@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Videojuego;
 use App\Http\Controllers\VideojuegoController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,6 +22,16 @@ Route::patch('/videojuegos/{id}/comprar', [VideojuegoController::class, 'comprar
 // Acción de DEVOLVER (Mueve el juego de la biblioteca a la tienda)
 Route::delete('/videojuegos/{id}/devolver', [VideojuegoController::class, 'devolver'])->name('videojuegos.devolver');
 
+// Comunidad
+Route::get('/comunidad', function () {
+    $tienda = \App\Models\Videojuego::where('comprado', false)->get();
+    return view('comunidad', compact('tienda'));
+})->name('comunidad');
+
+// Soporte
+Route::get('/soporte', function () {
+    return view('soporte');
+})->name('soporte');
 
 /*
 |--------------------------------------------------------------------------

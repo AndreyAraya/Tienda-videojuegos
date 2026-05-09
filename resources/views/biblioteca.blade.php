@@ -17,8 +17,8 @@
         <div class="nav-center">
             <a href="{{ route('home') }}">Tienda</a>
             <a href="{{ route('videojuegos.biblioteca') }}" style="color: #fff; border-bottom: 2px solid var(--neon-cyan);">Biblioteca</a>
-            <a href="#">Comunidad</a>
-            <a href="#">Soporte</a>
+            <a href="{{ route('comunidad') }}">Comunidad</a>
+            <a href="{{ route('soporte') }}">Soporte</a>
         </div>
 
         <div class="nav-right">
