@@ -21,6 +21,7 @@ return new class extends Migration
             $table->integer('stock');              // Inventario
             $table->date('fecha_lanzamiento');     // Fecha
             $table->string('imagen')->nullable();  // Esto crea el casillero para el link
+            $table->boolean('comprado')->default(false); // Por defecto, nadie lo ha comprado
             $table->timestamps();                  // created_at y updated_at
         });
     }
