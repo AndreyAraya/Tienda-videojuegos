@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,6 +13,7 @@
   {{-- Vite: CSS y JS --}}
   @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
+
 <body>
 
   <!-- NAVBAR -->
@@ -66,73 +68,27 @@
     </div>
 
     <div class="cards-grid">
-
-      <!-- Card 1 -->
-      <div class="game-card" style="--accent: #00c9a7;">
+      @foreach($videojuegos as $juego)
+      <div class="game-card" style="--accent: {{ $loop->iteration % 2 == 0 ? '#9f7aea' : '#00c9a7' }};">
         <div class="card-img-wrap">
-          <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1200&auto=format&fit=crop" alt="Cyber Forge">
+          <img src="{{ $juego->imagen }}" alt="{{ $juego->titulo }}">
           <div class="img-overlay"></div>
-          <span class="badge">Nuevo</span>
+          <span class="badge">{{ $juego->stock > 0 ? 'Disponible' : 'Agotado' }}</span>
         </div>
         <div class="card-body">
-          <p class="card-genre">RPG · Acción</p>
-          <h3 class="card-title">GTA V</h3>
-          <p class="card-desc">Un universo mundo abiertodonde cada decisión redefine tu destino.</p>
-          <div class="card-stars">★★★★★ <span>(2.4k reseñas)</span></div>
+          <p class="card-genre">{{ $juego->genero }} · {{ $juego->plataforma }}</p>
+          <h3 class="card-title">{{ $juego->titulo }}</h3>
+          <p class="card-desc">{{ $juego->descripcion }}</p>
+          <div class="card-stars">★★★★★ <span>(Nuevo)</span></div>
           <div class="card-footer">
             <div>
-              <div class="card-price">$59</div>
-              <div class="card-price-orig">$79</div>
+              <div class="card-price">${{ number_format($juego->precio, 2) }}</div>
             </div>
             <button class="btn-buy">Comprar</button>
           </div>
         </div>
       </div>
-
-      <!-- Card 2 -->
-      <div class="game-card" style="--accent: #9f7aea;">
-        <div class="card-img-wrap">
-          <img src="https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=1200&auto=format&fit=crop" alt="Endel Ring">
-          <div class="img-overlay"></div>
-          <span class="badge">Popular</span>
-        </div>
-        <div class="card-body">
-          <p class="card-genre">Souls-like · Oscuro</p>
-          <h3 class="card-title">Endel Ring</h3>
-          <p class="card-desc">Combates intensos en un mundo oscuro lleno de secretos antiguos.</p>
-          <div class="card-stars">★★★★☆ <span>(5.1k reseñas)</span></div>
-          <div class="card-footer">
-            <div>
-              <div class="card-price">$49</div>
-              <div class="card-price-orig">$65</div>
-            </div>
-            <button class="btn-buy">Comprar</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 3 -->
-      <div class="game-card" style="--accent: #f6ad55;">
-        <div class="card-img-wrap">
-          <img src="https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?q=80&w=1200&auto=format&fit=crop" alt="PUBG">
-          <div class="img-overlay"></div>
-          <span class="badge">Oferta</span>
-        </div>
-        <div class="card-body">
-          <p class="card-genre">Battle Royale · Multijugador</p>
-          <h3 class="card-title">PUBG</h3>
-          <p class="card-desc">Batallas cooperativas multijugador con hasta 100 jugadores en tiempo real.</p>
-          <div class="card-stars">★★★★☆ <span>(8.7k reseñas)</span></div>
-          <div class="card-footer">
-            <div>
-              <div class="card-price">$69</div>
-              <div class="card-price-orig">$89</div>
-            </div>
-            <button class="btn-buy">Comprar</button>
-          </div>
-        </div>
-      </div>
-
+      @endforeach
     </div>
   </section>
 
@@ -159,4 +115,5 @@
   </footer>
 
 </body>
+
 </html>
