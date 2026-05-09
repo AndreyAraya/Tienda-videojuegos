@@ -100,7 +100,7 @@ class VideojuegoSeeder extends Seeder
                 'genero' => 'Terror / Acción',
                 'plataforma' => 'PC / PS5 / Xbox',
                 'precio' => 59.99,
-                'stock' => 30,
+                'stock' => 35,
                 'fecha_lanzamiento' => '2023-03-24',
                 'imagen' => 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2050650/header.jpg',
                 'created_at' => now(),
