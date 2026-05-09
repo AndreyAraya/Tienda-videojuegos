@@ -10,5 +10,15 @@ class Videojuego extends Model
     protected $table = 'videojuegos';
 
     // Campos para usar en el backend y frontend
-    protected $fillable = ['titulo', 'descripcion', 'genero', 'plataforma', 'precio', 'stock', 'fecha_lanzamiento', 'imagen'];
+    protected $fillable = [
+        'titulo',
+        'descripcion',
+        'genero',
+        'plataforma',
+        'precio',
+        'stock',
+        'fecha_lanzamiento',
+        'imagen',
+        'comprado',
+    ];
 }
