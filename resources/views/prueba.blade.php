@@ -22,7 +22,7 @@
         <ul class="nav-links">
             <li><a href="#">Luisandro</a></li>
             <li><a href="#">Biblioteca</a></li>
-            <li><a href="#">Comunidad</a></li>
+            <li><a href="#">Gerson</a></li>
             <li><a href="#">Soporte</a></li>
         </ul>
         <div class="nav-actions">
