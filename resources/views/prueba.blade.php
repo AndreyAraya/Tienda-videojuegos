@@ -20,7 +20,7 @@
     <nav>
         <a href="#" class="nav-logo">Tienda<span>DeJuegos</span></a>
         <ul class="nav-links">
-            <li><a href="#">Tienda</a></li>
+            <li><a href="#">Luisandro</a></li>
             <li><a href="#">Biblioteca</a></li>
             <li><a href="#">Comunidad</a></li>
             <li><a href="#">Soporte</a></li>
