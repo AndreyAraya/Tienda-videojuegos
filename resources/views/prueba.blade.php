@@ -23,7 +23,7 @@
             <li><a href="#">Luisandro</a></li>
             <li><a href="#">Biblioteca</a></li>
             <li><a href="#">Gerson</a></li>
-            <li><a href="#">Soporte</a></li>
+            <li><a href="#">Andrey</a></li>
         </ul>
         <div class="nav-actions">
             <button class="btn-nav">Iniciar sesión</button>
