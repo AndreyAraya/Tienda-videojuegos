@@ -1,7 +1,6 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Route; // <--- AGREGA ESTA LÍNEA
+use App\Http\Controllers\VideojuegoController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [VideojuegoController::class, 'index']);
