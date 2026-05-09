@@ -330,8 +330,8 @@ section {
 
 .card-img-wrap img {
     width: 100%;
-    height: 180px; /* Ajusta la altura a tu gusto */
-    object-fit: cover; /* ¡Esto es lo más importante! Corta la imagen para que encaje sin estirarse */
+    height: 180px; /* Ajustar altura a gusto */
+    object-fit: cover; /* Ajusta imagen para que encaje sin estirarse */
 }
 
 .game-card {
