@@ -6,10 +6,8 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /*
-     * Ejecuta las migraciones.
-     * Este método se encarga de crear la tabla videojuegos en la base de datos con código php y no con SQL
-     */
+    // Ejecuta las migraciones
+    // Este método se encarga de crear la tabla videojuegos en la base de datos con código php y no con SQL
 
     public function up(): void
     {
@@ -28,10 +26,10 @@ return new class extends Migration
         });
     }
 
-    /*
-     * Revierte las migraciones.
-     * Este método se ejecuta al hacer un "rollback". Deshace los cambios realizados por el método up() en caso de un error o emergencia
-     */
+
+    // Revierte las migraciones
+    // Este método se ejecuta al hacer un "rollback". Deshace los cambios realizados por el método up() en caso de un error o emergencia
+
 
     public function down(): void
     {
