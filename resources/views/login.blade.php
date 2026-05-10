@@ -19,7 +19,7 @@
             @csrf
             <div class="form-group">
                 <label>Usuario Administrador</label>
-                <input type="text" name="usuario" class="admin-input" placeholder="Ej: TVJ" required>
+                <input type="text" name="usuario" class="admin-input" placeholder="Ej: TGV" required>
             </div>
             <div class="form-group">
                 <label>Contraseña</label>

@@ -78,7 +78,7 @@ class VideojuegoController extends Controller
 
     public function postLogin(Request $request)
     {
-        if ($request->usuario === 'TVJ' && $request->password === '1234') {
+        if ($request->usuario === 'TGV' && $request->password === '1234') {
             session(['logueado' => true]);
             // CAMBIO: Ahora te mantiene en la tienda
             return redirect()->route('home');
