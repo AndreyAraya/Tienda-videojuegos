@@ -197,7 +197,7 @@
 <body>
 
 <nav class="navbar">
-    <a href="{{ route('home') }}" class="nav-logo">TIENDA<span>DEJUEGOS</span></a>
+    <a href="{{ route('home') }}" class="nav-logo">THE<span>GAMEVAULT</span></a>
     <div class="nav-center">
         <a href="{{ route('home') }}">Tienda</a>
         <a href="{{ route('videojuegos.biblioteca') }}">Biblioteca</a>
@@ -205,7 +205,6 @@
         <a href="{{ route('soporte') }}" class="active">Soporte</a>
     </div>
     <div class="nav-right">
-        <a href="#" class="btn-login">Iniciar Sesión</a>
     </div>
 </nav>
 
@@ -231,7 +230,7 @@
             <div class="contact-icon"><i class="fas fa-envelope"></i></div>
             <div>
                 <div class="contact-label">Correo electrónico</div>
-                <div class="contact-title">soporte@tiendadejuegos.com</div>
+                <div class="contact-title">soporte@THEGAMEVAULT.com</div>
                 <div class="contact-value">Respuesta en menos de 24 h.</div>
             </div>
             <div class="contact-cta">Enviar correo <i class="fas fa-arrow-right"></i></div>
@@ -241,7 +240,7 @@
             <div class="contact-icon blue"><i class="fab fa-discord"></i></div>
             <div>
                 <div class="contact-label">Discord</div>
-                <div class="contact-title">discord.gg/tiendajuegos</div>
+                <div class="contact-title">discord.gg/THEGAMEVAULT</div>
                 <div class="contact-value">Chat en tiempo real con la comunidad.</div>
             </div>
             <div class="contact-cta">Unirse al servidor <i class="fas fa-arrow-right"></i></div>
@@ -251,7 +250,7 @@
             <div class="contact-icon purple"><i class="fab fa-twitter"></i></div>
             <div>
                 <div class="contact-label">Twitter / X</div>
-                <div class="contact-title">@TiendaDeJuegos</div>
+                <div class="contact-title">@THEGAMEVAULT</div>
                 <div class="contact-value">Actualizaciones y noticias oficiales.</div>
             </div>
             <div class="contact-cta">Seguirnos <i class="fas fa-arrow-right"></i></div>
@@ -331,8 +330,8 @@
 </div>
 
 <footer>
-    <div class="logo">TIENDA<span>DEJUEGOS</span></div>
-    <p>© {{ date('Y') }} TiendaDeJuegos. Todos los derechos reservados.</p>
+    <div class="logo">THE<span>GAMEVAULT</span></div>
+    <p>© {{ date('Y') }} THEGAMEVAULT. Todos los derechos reservados.</p>
     <div class="footer-links">
         <a href="{{ route('soporte') }}">Soporte</a>
         <a href="{{ route('comunidad') }}">Comunidad</a>

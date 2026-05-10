@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TiendaDeJuegos — Inicio</title>
+    <title>THEGAMEVAULT — Inicio</title>
     @vite(['resources/css/app.css'])
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
@@ -495,7 +495,7 @@
 
 <!-- NAVBAR -->
 <nav class="navbar">
-    <a href="{{ route('home') }}" class="nav-logo">TIENDA<span>DEJUEGOS</span></a>
+    <a href="{{ route('home') }}" class="nav-logo">THE<span>GAMEVAULT</span></a>
     <div class="nav-center">
         <a href="{{ route('home') }}" class="active">Tienda</a>
         <a href="{{ route('videojuegos.biblioteca') }}">Biblioteca</a>
@@ -532,7 +532,6 @@
                 <span class="hero-price">${{ number_format($game->precio, 2) }}</span>
                 <form action="{{ route('videojuegos.comprar', $game->id) }}" method="POST">
                     @csrf
-                    <button type="submit" class="btn-hero">Comprar Ahora</button>
                 </form>
             </div>
         </div>
@@ -659,12 +658,11 @@
 </main>
 
 <footer>
-    <div class="logo">TIENDA<span>DEJUEGOS</span></div>
-    <p>© {{ date('Y') }} TiendaDeJuegos. Todos los derechos reservados.</p>
+    <div class="logo">THE<span>GAMEVAULT</span></div>
+    <p>© {{ date('Y') }} THEGAMEVAULT. Todos los derechos reservados.</p>
     <div class="footer-links">
         <a href="{{ route('soporte') }}">Soporte</a>
         <a href="{{ route('comunidad') }}">Comunidad</a>
-        <a href="#">Privacidad</a>
     </div>
 </footer>
 

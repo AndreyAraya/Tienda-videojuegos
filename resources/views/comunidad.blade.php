@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TiendaDeJuegos — Comunidad</title>
+    <title>THEGAMEVAULT — Comunidad</title>
     @vite(['resources/css/app.css'])
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
@@ -210,7 +210,7 @@
 <body>
 
 <nav class="navbar">
-    <a href="{{ route('home') }}" class="nav-logo">TIENDA<span>DEJUEGOS</span></a>
+    <a href="{{ route('home') }}" class="nav-logo">THE<span>GAMEVAULT</span></a>
     <div class="nav-center">
         <a href="{{ route('home') }}">Tienda</a>
         <a href="{{ route('videojuegos.biblioteca') }}">Biblioteca</a>
@@ -218,7 +218,6 @@
         <a href="{{ route('soporte') }}">Soporte</a>
     </div>
     <div class="nav-right">
-        <a href="#" class="btn-login">Iniciar Sesión</a>
     </div>
 </nav>
 
@@ -351,8 +350,8 @@
 </div>
 
 <footer>
-    <div class="logo">TIENDA<span>DEJUEGOS</span></div>
-    <p>© {{ date('Y') }} TiendaDeJuegos. Todos los derechos reservados.</p>
+    <div class="logo">THE<span>GAMEVAULT</span></div>
+    <p>© {{ date('Y') }} THEGAMEVAULT. Todos los derechos reservados.</p>
     <div class="footer-links">
         <a href="{{ route('soporte') }}">Soporte</a>
         <a href="{{ route('comunidad') }}">Comunidad</a>
