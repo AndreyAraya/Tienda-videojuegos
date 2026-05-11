@@ -67,6 +67,18 @@ class VideojuegoController extends Controller
     // Recibe los datos del formulario y los guarda en la base de datos
     public function store(Request $request)
     {
+        // Validación del servidor para asegurar que los datos sean correctos antes de crear el juego
+        $request->validate([
+            'titulo' => 'required|string|max:255',
+            'descripcion' => 'required|string',
+            'genero' => 'required|string|max:255',
+            'plataforma' => 'required|string|max:255',
+            'precio' => 'required|numeric|min:0',
+            'stock' => 'required|integer|min:0',
+            'fecha_lanzamiento' => 'required|date',
+            'imagen' => 'nullable|string',
+        ]);
+
         Videojuego::create($request->all());
         return redirect()->route('home');
     }
@@ -81,6 +93,18 @@ class VideojuegoController extends Controller
     // Recibe los datos actualizados del formulario y sobrescribe el registro en la base de datos
     public function update(Request $request, $id)
     {
+        // Validación del servidor para asegurar que los datos sean correctos antes de actualizar
+        $request->validate([
+            'titulo' => 'required|string|max:255',
+            'descripcion' => 'required|string',
+            'genero' => 'required|string|max:255',
+            'plataforma' => 'required|string|max:255',
+            'precio' => 'required|numeric|min:0',
+            'stock' => 'required|integer|min:0',
+            'fecha_lanzamiento' => 'required|date',
+            'imagen' => 'nullable|string',
+        ]);
+
         Videojuego::findOrFail($id)->update($request->all());
         return redirect()->route('home');
     }
