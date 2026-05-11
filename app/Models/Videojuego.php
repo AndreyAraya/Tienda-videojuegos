@@ -10,7 +10,7 @@ class Videojuego extends Model
     protected $table = 'videojuegos';
 
     // Campos para usar en el backend y frontend
-    protected $fillable = [ //El arreglo $fillable define los campos que se pueden asignar y llenar en forumlarios, el resto de datos los ignora
+    protected $fillable = [ // El arreglo $fillable define los campos que se pueden asignar y llenar en forumlarios, el resto de datos los ignora
         'titulo',
         'descripcion',
         'genero',

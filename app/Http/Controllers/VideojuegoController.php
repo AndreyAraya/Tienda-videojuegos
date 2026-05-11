@@ -7,12 +7,14 @@ use Illuminate\Http\Request;
 
 class VideojuegoController extends Controller
 {
+    // Muestra la pantalla principal con los juegos disponibles (no comprados)
     public function index()
     {
         $tienda = Videojuego::where('comprado', false)->get();
         return view('welcome', compact('tienda'));
     }
 
+    // Muestra la biblioteca con los juegos que ya fueron comprados
     public function biblioteca()
     {
         $biblioteca = Videojuego::where('comprado', true)->get();
@@ -22,6 +24,9 @@ class VideojuegoController extends Controller
     // Acción de COMPRAR: Resta 1 al stock y lo mueve a la biblioteca
     public function comprar($id)
     {
+
+        // Busca el juego por ID o falla si no existe, si usamos solo find() y no encuentra el juego y daría un error que puede colapsar la página
+        // Con findOrFail() si no encuentra el juego lanza una excepción que se puede manejar o mostrar un error 404 automáticamente
         $juego = Videojuego::findOrFail($id);
 
         // Verificamos si hay stock antes de comprar
@@ -53,29 +58,34 @@ class VideojuegoController extends Controller
         return redirect()->route('home')->with('info', 'Juego eliminado del sistema');
     }
 
+    // Muestra el formulario vacío para crear un nuevo videojuego
     public function create()
     {
         return view('create');
     }
 
+    // Recibe los datos del formulario y los guarda en la base de datos
     public function store(Request $request)
     {
         Videojuego::create($request->all());
         return redirect()->route('home');
     }
 
+    // Muestra el formulario de edición cargando los datos actuales del juego
     public function edit($id)
     {
         $juego = Videojuego::findOrFail($id);
         return view('edit', compact('juego'));
     }
 
+    // Recibe los datos actualizados del formulario y sobrescribe el registro en la base de datos
     public function update(Request $request, $id)
     {
         Videojuego::findOrFail($id)->update($request->all());
         return redirect()->route('home');
     }
 
+    // Valida las credenciales manuales para iniciar sesión
     public function postLogin(Request $request)
     {
         if ($request->usuario === 'TGV' && $request->password === '1234') {
@@ -86,6 +96,7 @@ class VideojuegoController extends Controller
         return back()->with('error', 'Credenciales incorrectas');
     }
 
+    // Elimina la variable de sesión para cerrar la cuenta del usuario
     public function logout()
     {
         session()->forget('logueado');
