@@ -70,13 +70,12 @@ class VideojuegoController extends Controller
         // Validación del servidor para asegurar que los datos sean correctos antes de crear el juego
         $request->validate([
             'titulo' => 'required|string|max:255',
-            'descripcion' => 'required|string',
-            'genero' => 'required|string|max:255',
-            'plataforma' => 'required|string|max:255',
             'precio' => 'required|numeric|min:0',
             'stock' => 'required|integer|min:0',
+            'genero' => 'required|string|max:255',
+            'plataforma' => 'required|string|max:255',
             'fecha_lanzamiento' => 'required|date',
-            'imagen' => 'nullable|string',
+            'imagen' => 'required|url',
         ]);
 
         Videojuego::create($request->all());
@@ -96,13 +95,12 @@ class VideojuegoController extends Controller
         // Validación del servidor para asegurar que los datos sean correctos antes de actualizar
         $request->validate([
             'titulo' => 'required|string|max:255',
-            'descripcion' => 'required|string',
-            'genero' => 'required|string|max:255',
-            'plataforma' => 'required|string|max:255',
             'precio' => 'required|numeric|min:0',
             'stock' => 'required|integer|min:0',
+            'genero' => 'required|string|max:255',
+            'plataforma' => 'required|string|max:255',
             'fecha_lanzamiento' => 'required|date',
-            'imagen' => 'nullable|string',
+            'imagen' => 'required|url',
         ]);
 
         Videojuego::findOrFail($id)->update($request->all());
