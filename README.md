@@ -29,7 +29,7 @@ This project was developed as a practice application focused on backend developm
 - RESTful application structure
 - Frontend and backend integration
 
-## Author
+## Authors
 - Carlos Andrey Araya Quirós
 - Dorian Álvarez López
 - Jose Córdoba Bolaños
