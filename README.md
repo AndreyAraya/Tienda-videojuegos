@@ -30,8 +30,8 @@ This project was developed as a practice application focused on backend developm
 - Frontend and backend integration
 
 ## Author
-Carlos Andrey Araya Quirós
-Dorian Álvarez López
-Jose Córdoba Bolaños
-Luisandro Arce Carvajal
-Gerson Villachica Umaña
+- Carlos Andrey Araya Quirós
+- Dorian Álvarez López
+- Jose Córdoba Bolaños
+- Luisandro Arce Carvajal
+- Gerson Villachica Umaña
