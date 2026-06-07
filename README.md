@@ -1,4 +1,4 @@
-# Video Game Store System
+# The GameVault
 
 A full-stack web application inspired by digital video game platforms such as Steam. The system allows users to browse and manage video games through an interactive store and personal library experience.
 
